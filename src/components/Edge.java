@@ -6,5 +6,6 @@ public interface Edge {
 	void setEndPoints(Vertex v1, Vertex v2);
 	void setEndPoints(Edge e);
 	boolean equals(Object obj);
+	String toString();
 	Object clone();
 }

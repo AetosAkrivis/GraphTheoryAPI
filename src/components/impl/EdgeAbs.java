@@ -3,65 +3,83 @@ package components.impl;
 import components.Edge;
 import components.Vertex;
 
-public abstract class EdgeAbs implements Edge,Cloneable{
+public abstract class EdgeAbs implements Edge, Cloneable {
 	private Vertex[] endPoints;
+	private Double weight;
 
-	public EdgeAbs(Vertex v1, Vertex v2){
+	public EdgeAbs(Vertex v1, Vertex v2, Double... weight) {
 		endPoints = new Vertex[2];
-		endPoints[0]=v1;
-		endPoints[1]=v2;
+		endPoints[0] = v1;
+		endPoints[1] = v2;
+
+		// If the weight has been entered as a parameter, We will use it in a
+		// separate variable, otherwise it will be given the default value of 1
+		Double w = weight.length > 0 ? weight[0] : 1;
+
+		if (weight.length > 1) {
+			throw new IllegalArgumentException(
+					"There can only be 3 arguments: Vertex c1, Vertex v2, (Optional) double weight");
+		}
+		if (!(w instanceof Double)) {
+			throw new IllegalArgumentException("Weight can only be of type Double (and its subtypes). E.g., 1.0, 5.2");
+		}
+		this.weight = w;
 	}
-	
-	public EdgeAbs(Edge e){
-		endPoints = new Vertex[2];
-		endPoints[0] = e.getEndPoints()[0];
-		endPoints[1] = e.getEndPoints()[1];
-	}
-	
-	/**
-	 * Will return a copy of the list 
-	 */
-	public Vertex[] getEndPoints(){
+
+	public Vertex[] getEndPoints() {
 		Vertex[] other = new Vertex[2];
 		other[0] = endPoints[0];
 		other[1] = endPoints[1];
-		
+
 		return other;
 	}
-	
-	public void setEndPoints(Vertex v1, Vertex v2){
+
+	public void setEndPoints(Vertex v1, Vertex v2) {
 		endPoints[0] = v1;
 		endPoints[1] = v2;
 	}
 
-	public boolean equals(Object obj){
-		if(this == obj){
+	public void setEndPoints(Edge e) {
+		setEndPoints(e.getEndPoints()[0], e.getEndPoints()[1]);
+	}
+
+	public Double getWeight() {
+		return this.weight;
+	}
+
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj) {
 			return true;
 		}
-		if(obj == null){
+		if (obj == null) {
 			return false;
 		}
-		if(!(obj instanceof Edge))	{
+		if (!(obj instanceof Edge)) {
 			return false;
 		}
 		Edge other = (Edge) obj;
-		if (endPoints[0] == null && endPoints[1]==null){
-			if(other.getEndPoints()[0] != null && other.getEndPoints()[1] != null){
+		if (endPoints[0] == null && endPoints[1] == null) {
+			if (other.getEndPoints()[0] != null && other.getEndPoints()[1] != null) {
 				return false;
 			}
-		} else if (!(endPoints[0].equals(other.getEndPoints()[0]) && endPoints[1].equals(other.getEndPoints()[1]))){
+		} else if (!(endPoints[0].equals(other.getEndPoints()[0]) && endPoints[1].equals(other.getEndPoints()[1]))) {
 			return false;
 		}
 		return true;
-		
+
 	}
+
 	public abstract Object clone();
-	
-	public boolean isLoop(){
-		if (!(endPoints[0]== null && endPoints[1]==null)){
+
+	public boolean isLoop() {
+		if (!(endPoints[0] == null && endPoints[1] == null)) {
 			return false;
 		}
-		if( !(endPoints[0].equals(endPoints[1])) ){
+		if (!(endPoints[0].equals(endPoints[1]))) {
 			return false;
 		}
 		return true;

@@ -8,6 +8,10 @@ public abstract class VertexAbs implements Vertex{
 	public VertexAbs(String label) {
 		this.label = label;
 	}
+	
+	public VertexAbs(){
+		this.label="/";
+	}
 
 	public String getLabel() {
 		return label;
@@ -19,7 +23,7 @@ public abstract class VertexAbs implements Vertex{
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("VertexAbs [label=" + label + "]");
+		StringBuilder sb = new StringBuilder("["+ label + "]");
 		return sb.toString();
 	}
 
