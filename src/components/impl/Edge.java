@@ -1,6 +1,6 @@
 package components.impl;
 
-import components.Edge;
+import components.Connection;
 import components.Vertex;
 
 /**
@@ -15,7 +15,7 @@ import components.Vertex;
  * @see GenericVertex
  *
  */
-public class UndirectedEdge extends EdgeAbs {
+public class Edge extends AbstractConnection {
 
 	/**
 	 * Instantiate this Edge from a couple of vertices.
@@ -28,7 +28,7 @@ public class UndirectedEdge extends EdgeAbs {
 	 *            A value associated to the Edge, if it is not entered amongst
 	 *            the parameters, will take the default value of 1.0.
 	 */
-	public UndirectedEdge(Vertex v1, Vertex v2, Double... weight) {
+	public Edge(Vertex v1, Vertex v2, Double... weight) {
 		super(v1, v2, weight);
 	}
 
@@ -40,7 +40,7 @@ public class UndirectedEdge extends EdgeAbs {
 	 * <li>Weight = 1.0</li>
 	 * </ul>
 	 */
-	public UndirectedEdge() {
+	public Edge() {
 		super(new GenericVertex(), new GenericVertex());
 	}
 
@@ -62,7 +62,7 @@ public class UndirectedEdge extends EdgeAbs {
 
 	@Override
 	public Object clone() {
-		return new UndirectedEdge(this.getEndPoints()[0], this.getEndPoints()[1], this.getWeight());
+		return new Edge(this.getEndPoints()[0], this.getEndPoints()[1], this.getWeight());
 	}
 
 	/**
@@ -74,10 +74,10 @@ public class UndirectedEdge extends EdgeAbs {
 		Vertex v3 = new GenericVertex("C");
 		Vertex v4 = new GenericVertex("D");
 
-		Edge e1 = new UndirectedEdge(v1, v2, 3.0);
-		Edge e2 = new UndirectedEdge(v2, v3);
-		Edge e3 = new UndirectedEdge(v3, v4);
-		Edge e4 = new UndirectedEdge();
+		Connection e1 = new Edge(v1, v2, 3.0);
+		Connection e2 = new Edge(v2, v3);
+		Connection e3 = new Edge(v3, v4);
+		Connection e4 = new Edge();
 
 
 		System.out.println(e1.toString());

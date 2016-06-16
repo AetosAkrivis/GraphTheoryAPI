@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import components.Edge;
+import components.Connection;
 import components.Graph;
 import components.Vertex;
 
@@ -38,28 +38,28 @@ import components.Vertex;
  * @author imady
  *
  */
-public abstract class GraphAbs implements Graph{
+public abstract class AbstractGraph implements Graph{
 
 	private String name;
 	private Set<Vertex> vertexSet;
-	private List<Edge> edgeList;
+	private List<Connection> connectionList;
 	private int n;
 	private int m;
 	private Map<Vertex, Integer> degreeOfVertex;
 
-	public GraphAbs(String name, List<Edge> edgeList) {
+	public AbstractGraph(String name, List<Connection> edgeList) {
 		//Field name
 		this.name = name;
 		//Field edgeList
-		this.edgeList = new ArrayList<>(edgeList);
+		this.connectionList = new ArrayList<>(edgeList);
 		//Field vertexSet
 		this.vertexSet = new HashSet<>();
 		// Calculating the vertices
 
-		Iterator<Edge> itEdge1 = this.edgeList.iterator();
+		Iterator<Connection> itConnection1 = this.connectionList.iterator();
 
-		while (itEdge1.hasNext()) {
-			Edge e = itEdge1.next();
+		while (itConnection1.hasNext()) {
+			Connection e = itConnection1.next();
 			
 			Vertex v1 = e.getEndPoints()[0];
 			Vertex v2 = e.getEndPoints()[1];
@@ -70,7 +70,7 @@ public abstract class GraphAbs implements Graph{
 		//Field n
 		this.n = this.vertexSet.size();
 		//Field m
-		this.m = this.edgeList.size();
+		this.m = this.connectionList.size();
 
 		//Field degreeOfVertex
 		
@@ -87,10 +87,10 @@ public abstract class GraphAbs implements Graph{
 			Vertex v = itVertex.next();
 			this.degreeOfVertex.putIfAbsent(v, 0);
 
-			Iterator<Edge> itEdge2 = this.edgeList.iterator();
+			Iterator<Connection> itConnection2 = this.connectionList.iterator();
 			
-			while (itEdge2.hasNext()) {
-				Edge e = itEdge2.next();
+			while (itConnection2.hasNext()) {
+				Connection e = itConnection2.next();
 
 				//If this edge is a loop, then the degree of its vertex is 2.
 				int inc = e.isLoop()?2:1;
@@ -103,8 +103,8 @@ public abstract class GraphAbs implements Graph{
 		}
 		
 		System.out.println("Vertices:"+this.vertexSet);
-		System.out.println("Vertices degrees:"+this.degreeOfVertex);
-		System.out.println("Edges:"+this.edgeList);
+		System.out.println("Degrees of vertices:"+this.degreeOfVertex);
+		System.out.println("Connections:"+this.connectionList);
 
 	}
 

@@ -6,7 +6,7 @@ package components.impl;
  * @see Arc
  * @see UndirectedEdge
  */
-public class GenericVertex extends VertexAbs {
+public class GenericVertex extends AbstractVertex {
 
 	public GenericVertex(String label) {
 		super(label);

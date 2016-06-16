@@ -5,13 +5,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import components.Edge;
+import components.Connection;
 import components.Graph;
 import components.Vertex;
 
-public class UnorientedGraph extends GraphAbs {
+public class UnorientedGraph extends AbstractGraph {
 
-	public UnorientedGraph(String name, List<Edge> edgeSet) {
+	public UnorientedGraph(String name, List<Connection> edgeSet) {
 		super(name, edgeSet);
 	}
 
@@ -21,13 +21,13 @@ public class UnorientedGraph extends GraphAbs {
 		Vertex v3 = new GenericVertex("C");
 		Vertex v4 = new GenericVertex("D");
 
-		Edge e1 = new UndirectedEdge(v1, v2, 3.0);
-		Edge e2 = new UndirectedEdge(v2, v3);
-		Edge e3 = new UndirectedEdge(v3, v4);
-		Edge e4 = new UndirectedEdge();
-		Edge e5 = new UndirectedEdge(v1, v2);
+		Connection e1 = new Edge(v1, v2, 3.0);
+		Connection e2 = new Edge(v2, v3);
+		Connection e3 = new Edge(v3, v4);
+		Connection e4 = new Edge();
+		Connection e5 = new Edge(v1, v2);
 		
-		List<Edge> edgeList = new ArrayList<>();
+		List<Connection> edgeList = new ArrayList<>();
 		edgeList.add(e1);
 		edgeList.add(e2);
 		edgeList.add(e3);

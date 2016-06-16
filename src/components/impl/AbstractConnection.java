@@ -1,14 +1,14 @@
 package components.impl;
 
-import components.Edge;
+import components.Connection;
 import components.Vertex;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public abstract class EdgeAbs implements Edge, Cloneable {
+public abstract class AbstractConnection implements Connection, Cloneable {
 	private Vertex[] endPoints;
 	private Double weight;
 
-	public EdgeAbs(Vertex v1, Vertex v2, Double... weight) {
+	public AbstractConnection(Vertex v1, Vertex v2, Double... weight) {
 		endPoints = new Vertex[2];
 		endPoints[0] = v1;
 		endPoints[1] = v2;
@@ -40,7 +40,7 @@ public abstract class EdgeAbs implements Edge, Cloneable {
 		endPoints[1] = v2;
 	}
 
-	public void setEndPoints(Edge e) {
+	public void setEndPoints(Connection e) {
 		setEndPoints(e.getEndPoints()[0], e.getEndPoints()[1]);
 	}
 
@@ -60,10 +60,10 @@ public abstract class EdgeAbs implements Edge, Cloneable {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof Edge)) {
+		if (!(obj instanceof Connection)) {
 			return false;
 		}
-		Edge other = (Edge) obj;
+		Connection other = (Connection) obj;
 		if (endPoints[0] == null && endPoints[1] == null) {
 			if (other.getEndPoints()[0] != null && other.getEndPoints()[1] != null) {
 				return false;

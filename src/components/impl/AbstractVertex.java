@@ -4,14 +4,14 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import components.Vertex;
 
-public abstract class VertexAbs implements Vertex {
+public abstract class AbstractVertex implements Vertex {
 	private String label;
 
-	public VertexAbs(String label) {
+	public AbstractVertex(String label) {
 		this.label = label;
 	}
 
-	public VertexAbs() {
+	public AbstractVertex() {
 		this.label = "/";
 	}
 

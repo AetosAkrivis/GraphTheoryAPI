@@ -1,6 +1,6 @@
 package components.impl;
 
-import components.Edge;
+import components.Connection;
 import components.Vertex;
 
 /**
@@ -15,7 +15,7 @@ import components.Vertex;
  * @see UndirectedEdge
  * @see GenericVertex
  */
-public class Arc extends EdgeAbs {
+public class Arc extends AbstractConnection {
 
 	private int direction;
 
@@ -109,10 +109,10 @@ public class Arc extends EdgeAbs {
 		Vertex v3 = new GenericVertex("C");
 		Vertex v4 = new GenericVertex("D");
 
-		Edge e1 = new Arc(v1, v2, 1, 3.0);
-		Edge e2 = new Arc(v2, v3, -1);
-		Edge e3 = new Arc(v3, v4, 1);
-		Edge e4 = new Arc();
+		Connection e1 = new Arc(v1, v2, 1, 3.0);
+		Connection e2 = new Arc(v2, v3, -1);
+		Connection e3 = new Arc(v3, v4, 1);
+		Connection e4 = new Arc();
 
 		System.out.println(e1.toString());
 		System.out.println(e2.toString());
