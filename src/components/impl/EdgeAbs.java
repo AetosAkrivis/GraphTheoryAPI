@@ -2,6 +2,7 @@ package components.impl;
 
 import components.Edge;
 import components.Vertex;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public abstract class EdgeAbs implements Edge, Cloneable {
 	private Vertex[] endPoints;
@@ -51,6 +52,7 @@ public abstract class EdgeAbs implements Edge, Cloneable {
 		this.weight = weight;
 	}
 
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -73,10 +75,22 @@ public abstract class EdgeAbs implements Edge, Cloneable {
 
 	}
 
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(17, 37).append(endPoints).append(weight).toHashCode();
+	}
+
+	@Override
 	public abstract Object clone();
 
+	/**
+	 * If the (Directed or undirected) edge's source is its destination then it
+	 * is a loop.
+	 * 
+	 * @return true if the edge is a loop, false otherwise.
+	 */
 	public boolean isLoop() {
-		if (!(endPoints[0] == null && endPoints[1] == null)) {
+		if (!(endPoints[0] != null && endPoints[1] != null)) {
 			return false;
 		}
 		if (!(endPoints[0].equals(endPoints[1]))) {

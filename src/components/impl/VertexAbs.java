@@ -1,16 +1,18 @@
 package components.impl;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import components.Vertex;
 
-public abstract class VertexAbs implements Vertex{
+public abstract class VertexAbs implements Vertex {
 	private String label;
 
 	public VertexAbs(String label) {
 		this.label = label;
 	}
-	
-	public VertexAbs(){
-		this.label="/";
+
+	public VertexAbs() {
+		this.label = "/";
 	}
 
 	public String getLabel() {
@@ -23,13 +25,10 @@ public abstract class VertexAbs implements Vertex{
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("["+ label + "]");
+		StringBuilder sb = new StringBuilder("[" + label + "]");
 		return sb.toString();
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -53,7 +52,11 @@ public abstract class VertexAbs implements Vertex{
 	}
 	
 	@Override
+	public int hashCode(){
+		return new HashCodeBuilder(17,37).append(label).toHashCode();
+	}
+
+	@Override
 	public abstract Object clone();
-	
-	
+
 }

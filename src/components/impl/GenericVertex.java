@@ -1,10 +1,20 @@
 package components.impl;
 
+/**
+ * A vertex is describe via a label, it can also be called a node.
+ * @author imady
+ * @see Arc
+ * @see UndirectedEdge
+ */
 public class GenericVertex extends VertexAbs {
 
 	public GenericVertex(String label) {
 		super(label);
 	}
+	
+	/**
+	 * Will instantiate a vertex with a default label "\"
+	 */
 	public GenericVertex(){
 		super();
 	}

@@ -8,4 +8,5 @@ public interface Edge {
 	boolean equals(Object obj);
 	String toString();
 	Object clone();
+	boolean isLoop();
 }
