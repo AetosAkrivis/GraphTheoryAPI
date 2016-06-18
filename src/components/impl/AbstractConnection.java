@@ -98,4 +98,13 @@ public abstract class AbstractConnection implements Connection, Cloneable {
 		}
 		return true;
 	}
+	
+	@Override
+	public boolean isIsomorphic(Connection c){
+		//Remember to add instance verification for inheriting classes : Edge, Arc.
+		if(!this.getWeight().equals(c.getWeight())){
+			return false;
+		}
+		return true;
+	}
 }
